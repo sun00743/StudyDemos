@@ -1,4 +1,4 @@
-package com.mika.demo.study.livedata
+package com.mika.demo.study.livedata.base
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel

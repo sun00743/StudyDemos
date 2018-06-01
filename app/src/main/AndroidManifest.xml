@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".livedata.NameActivity"
+            android:name=".livedata.base.NameActivity"
             android:label="@string/title_activity_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
