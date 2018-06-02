@@ -6,18 +6,26 @@ import android.util.Log
 
 /**
  * Created by mika on 2018/6/1
+ *
+ * 创建StockManager并且在其初始化后就开始工作？
+ * 观察者，在后台时停止观察。
+ * 单例，多个activity/fragment共享。
+ * 开启线程自动，持续更新数据？
  */
-class StockLiveData() : LiveData<BigDecimal>(){
+class StockLiveData() : LiveData<BigDecimal>() {
 
     private lateinit var mStockManager: StockManager
 
-    private val mListener = object : StockManager.SimplePriceListener{
+    private val mListener = object : StockManager.SimplePriceListener {
         override fun onPriceChanged(price: BigDecimal) {
             value = price
         }
     }
 
-    private constructor(symbol: String) : this() {
+    /**
+     * 创建StockManager并且在其初始化后就开始工作？
+     */
+    private constructor(symbol: Int) : this() {
         mStockManager = StockManager(symbol)
     }
 
@@ -25,6 +33,14 @@ class StockLiveData() : LiveData<BigDecimal>(){
         Log.d("mika_demo", "StockLiveData: onActive")
 
         mStockManager.requestPriceUpdates(mListener)
+    }
+
+//    fun updatePrice() {
+//        mStockManager.updatePrice()
+//    }
+
+    fun changeKey(symbol: Int) {
+        mStockManager.symbol = symbol
     }
 
     override fun onInactive() {
@@ -38,7 +54,7 @@ class StockLiveData() : LiveData<BigDecimal>(){
         private var instance: StockLiveData? = null
 
         @JvmStatic
-        fun get(symbol: String): StockLiveData {
+        fun get(symbol: Int): StockLiveData {
             if (instance == null) {
                 instance = StockLiveData(symbol)
             }
