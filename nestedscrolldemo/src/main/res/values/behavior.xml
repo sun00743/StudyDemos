@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="alpha_title_scroll_behavior">com.mika.nestedscrolldemo.behavior.SimpleTitleBehavior</string>
+
+</resources>

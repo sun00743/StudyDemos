@@ -2,6 +2,7 @@ package com.mika.nestedscrolldemo.nested
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.view.NestedScrollingParent2
@@ -53,6 +54,8 @@ class CustomNestedScrollParentView : LinearLayout, NestedScrollingParent2 {
 
     override fun onNestedPreScroll(target: View, dx: Int, dy: Int, consumed: IntArray, type: Int) {
         super.onNestedPreScroll(target, dx, dy, consumed)
+
+        Log.d("mika", "CustomNestedScrollParentView scroll dy: $dy")
 
         val headerScrollUp = dy > 0 && scrollY < mHeadHeight
         val headerScrollDown = dy < 0 && scrollY > 0 && !target.canScrollVertically(-1)

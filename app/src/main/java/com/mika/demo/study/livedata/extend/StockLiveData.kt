@@ -1,7 +1,7 @@
 package com.mika.demo.study.livedata.extend
 
-import android.arch.lifecycle.LiveData
 import android.util.Log
+import androidx.lifecycle.LiveData
 
 
 /**

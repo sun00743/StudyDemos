@@ -1,7 +1,8 @@
 package com.mika.demo.study.livedata.base
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+
 
 /**
  * Created by mika on 2018/5/31

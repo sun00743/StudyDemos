@@ -1,13 +1,12 @@
 package com.mika.demo.study.livedata.base
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.mika.demo.study.R
 import com.mika.demo.study.livedata.extend.ExpandFragment
-
 import kotlinx.android.synthetic.main.activity_name.*
 
 class NameActivity : AppCompatActivity() {
@@ -18,6 +17,7 @@ class NameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_name)
+
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener {

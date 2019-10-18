@@ -13,7 +13,7 @@ class CustomNestedScrollActivity : AppCompatActivity() {
 
     companion object {
         fun starter(context: Activity) {
-            context.startActivity(Intent(context, this::class.java))
+            context.startActivity(Intent(context, CustomNestedScrollActivity::class.java))
         }
     }
 

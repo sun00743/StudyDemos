@@ -1,6 +1,7 @@
 package com.mika.demo.study.livedata.extend
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
+
 
 /**
  * Created by mika on 2018/6/2.
