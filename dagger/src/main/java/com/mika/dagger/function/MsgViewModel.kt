@@ -23,8 +23,11 @@ class MsgViewModel(name: String) : ViewModel() {
 
 }
 
-data class Msg
 
-@Inject
-constructor(@Named("msgName2") var content: String,
-            val id: Int)
+/**
+ * data bean
+ *
+ * Module中Provides方法中的参数使用inject
+ */
+data class Msg @Inject constructor(@Named("msgName2") var content: String,
+                                   val id: Int)

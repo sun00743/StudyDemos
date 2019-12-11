@@ -26,17 +26,30 @@ class NameActivity : AppCompatActivity() {
         }
 
         mModel = ViewModelProviders.of(this)[NameViewModel::class.java]
+        lifecycle.addObserver(mModel)
 
         mModel.getCurrentName().observe(this, Observer<String> {
             Log.d("mika", "currentName: $it")
         })
 
-
         supportFragmentManager.beginTransaction()
                 .add(R.id.livedata_expand_container, ExpandFragment.newInstance(null, null))
                 .commit()
+
+//        lifecycleRegistry.currentState = Lifecycle.State.CREATED
     }
 
+    override fun onStart() {
+        super.onStart()
+//        lifecycleRegistry.currentState = Lifecycle.State.STARTED
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+//        lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
+    }
+
+//    override fun getLifecycle(): Lifecycle = lifecycleRegistry
 
 
 }

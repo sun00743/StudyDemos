@@ -8,11 +8,8 @@ import javax.inject.Inject
  * Created by mika on 2019/10/15.
  */
 
-class MsgViewModelFactory
-
-@Inject
-constructor(private val name: Msg)
-    :ViewModelProvider.Factory {
+class MsgViewModelFactory @Inject constructor(private val name: Msg) :
+        ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

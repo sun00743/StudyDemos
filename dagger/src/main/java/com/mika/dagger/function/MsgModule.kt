@@ -15,7 +15,7 @@ class MsgModule(private val activity: DaggerDemoActivity) {
 //    lateinit var demoName: String
 
     @Provides
-    fun msgViewModel(factory: MsgViewModelFactory): MsgViewModel {
+    fun msgViewModel(factory: MsgViewModelFactory, name: String): MsgViewModel {
         return ViewModelProviders.of(activity, factory)[MsgViewModel::class.java]
     }
 

@@ -1,1 +1,1 @@
-include ':app', ':nestedscrolldemo', ':dagger'
+include ':app', ':nestedscrolldemo', ':dagger', ':coroutines'

@@ -1,21 +1,42 @@
 package com.mika.demo.study.livedata.base
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.util.Log
+import androidx.lifecycle.*
 
 
 /**
  * Created by mika on 2018/5/31
  */
-class NameViewModel : ViewModel() {
+class NameViewModel : ViewModel(), LifecycleObserver {
 
-    private lateinit var mCurrentName : MutableLiveData<String>
+    private var isFirstStated = true
 
-    fun getCurrentName(): MutableLiveData<String> {
-        if (!::mCurrentName.isInitialized) {
-            mCurrentName = MutableLiveData()
-        }
-        return mCurrentName
+    private var mCurrentName : MutableLiveData<String> = MutableLiveData()
+
+    fun getCurrentName(): MutableLiveData<String> = mCurrentName
+
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    fun loadCurrentName() {
+        mCurrentName.value = "mika_001"
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    fun loadCurrentNameAgain() {
+        mCurrentName.value = "mika_002"
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun started() {
+        Log.d("mika_lifecycle", "started event")
+        if (isFirstStated) {
+            isFirstStated = false
+            mCurrentName.value = "mika_started"
+        }
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun onDestroy() {
+        Log.d("mika_lifecycle", "destroy event")
+    }
 }
