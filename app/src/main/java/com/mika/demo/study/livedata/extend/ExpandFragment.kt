@@ -52,12 +52,15 @@ class ExpandFragment : Fragment() {
 
         viewModel.data.observe(this, Observer {
             Log.d("mika", "TransformationsViewModel_Observer: onUpdate: " + it?.num.toString())
-//            expand_text.text = it?.num.toString()
+            expand_text.text = it?.num.toString()
         })
 
         var keyData = 100
-        expand_text.setOnClickListener {
+        increase.setOnClickListener {
             viewModel.setKeyData(keyData++)
+        }
+        decrease.setOnClickListener {
+            viewModel.setKeyData(keyData--)
         }
     }
 
