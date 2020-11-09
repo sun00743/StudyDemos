@@ -1,13 +1,12 @@
 package com.mika.coroutines
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.mika.withview.CoroutinesWithViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,15 +23,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        GlobalWorker.startWork()
+
+        GlobalScope.launch {
+
+        }
+
         click2.setOnClickListener {
-            var toInt = click2.text.toString().toInt()
-            toInt++
-            click2.text = toInt.toString()
+//            var toInt = click2.text.toString().toInt()
+//            toInt++
+//            click2.text = toInt.toString()
+
+            startActivity(Intent(this, CoroutinesWithViewActivity::class.java))
         }
 
         click.setOnClickListener {
             i++
             Log.d("mika_coroutines_num", "click    $i")
+
             //启动一个协程，默认立刻启动
             val job = mainScope.launch {
                 i++
@@ -76,19 +84,26 @@ class MainActivity : AppCompatActivity() {
                 Log.d("mika_coroutines", "launch_返回")
                 async_get.text = "3"
             }
+            //启动第二个协程
             mainScope.launch {
                 i++
                 Log.d("mika_coroutines_num", "launch后_挂起   $i")
                 delay(1000)
                 Log.d("mika_coroutines_num", "launch后_返回   $i")
 
+
                 async_get.text = withContext(coroutineContext) {
                     delay(3000)
                     "10000000"
                 }
+                async_get.text = async {
+                    Thread.sleep(1000)
+                    i.toString()
+                }.await()
 
 //                job.cancel()
             }
+
         }
 
         Log.d("mika_coroutines", "1")

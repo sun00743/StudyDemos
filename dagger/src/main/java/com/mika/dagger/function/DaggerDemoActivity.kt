@@ -9,6 +9,7 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.Observer
 import com.mika.dagger.R
 import javax.inject.Inject
+import javax.inject.Named
 
 class DaggerDemoActivity : AppCompatActivity(), LifecycleOwner {
 
@@ -16,7 +17,7 @@ class DaggerDemoActivity : AppCompatActivity(), LifecycleOwner {
     lateinit var viewModel: MsgViewModel
 
     @Inject
-//    @Named("msgName")
+    @Named("msgName2")
     lateinit var baseString: String
 
     private lateinit var lifecycleRegistry: LifecycleRegistry

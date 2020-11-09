@@ -1,5 +1,7 @@
 package com.mika.demo.study.livedata.base
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +39,10 @@ class NameActivity : AppCompatActivity() {
                 .commit()
 
 //        lifecycleRegistry.currentState = Lifecycle.State.CREATED
+
+        setResult(Activity.RESULT_OK, Intent().apply {
+            putExtra("key_mika", "this is result !")
+        })
     }
 
     override fun onStart() {

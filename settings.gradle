@@ -1,1 +1,3 @@
+include ':materialcomponents'
+include ':recyclerviewdemo'
 include ':app', ':nestedscrolldemo', ':dagger', ':coroutines'
