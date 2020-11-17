@@ -24,11 +24,12 @@ class StockManager(var symbol: Int) {
     }
 
     private fun updatePrice(symbol: Int) {
-        this.symbol += symbol
+// We can update our symbol or data here too
+//        this.symbol += symbol
         mUpdates.forEach {
             it.onPriceChanged(BigDecimal(this.symbol))
         }
-        mHandler.sendEmptyMessageDelayed(messageUpdate, 1000)
+        mHandler.sendEmptyMessageDelayed(messageUpdate, 100)
     }
 
     fun requestPriceUpdates(listener: SimplePriceListener) {
