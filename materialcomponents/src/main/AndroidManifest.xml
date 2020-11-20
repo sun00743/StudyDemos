@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyDemos">
-        <activity android:name=".ShapeImageViewActivity"></activity>
+        <activity android:name=".shape.ShapeImageViewActivity"></activity>
         <activity android:name=".ChipsActivity" />
         <activity
             android:name=".botoomnavigation.BottomNavigationActivity"

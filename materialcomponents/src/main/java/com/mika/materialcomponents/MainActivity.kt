@@ -7,6 +7,7 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.mika.materialcomponents.botoomnavigation.BottomNavigationActivity
 import com.mika.materialcomponents.bottomappbar.BottomAppBarCutCornersTopEdge
+import com.mika.materialcomponents.shape.ShapeImageViewActivity
 import com.mika.materialcomponents.topappbar.TopAppBarActivity
 import kotlinx.android.synthetic.main.activity_main.*
 

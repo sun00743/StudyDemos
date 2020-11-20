@@ -91,15 +91,15 @@ class MainActivity : AppCompatActivity() {
                 delay(1000)
                 Log.d("mika_coroutines_num", "launch后_返回   $i")
 
-
                 async_get.text = withContext(coroutineContext) {
                     delay(3000)
                     "10000000"
                 }
-                async_get.text = async {
+                val async = async(Dispatchers.IO) {
                     Thread.sleep(1000)
                     i.toString()
-                }.await()
+                }
+                async_get.text = async.await()
 
 //                job.cancel()
             }
