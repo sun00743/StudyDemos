@@ -28,6 +28,8 @@ class CoroutinesWithViewActivity : AppCompatActivity() {
             GlobalWorker.stopWork()
         }
 
+        awaitViewLayout()
+
         initRecyclerView()
 
         //等待 view layout
@@ -109,7 +111,8 @@ class CoroutinesWithViewActivity : AppCompatActivity() {
 
     private fun awaitViewLayout() {
         lifecycleScope.launch {
-            textView.awaitNextLayout()
+//            textView.awaitNextLayout()
+            textView.resolvesize
             Log.d("mika", "th after await : ${textView.width.toFloat()}")
 
             textView.translationY = -textView.width.toFloat()

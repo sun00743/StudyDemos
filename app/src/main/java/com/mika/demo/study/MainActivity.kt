@@ -8,7 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mika.demo.study.activityreuslt.OnActivityResultListener
 import com.mika.demo.study.activityreuslt.OnResultFragment
 import com.mika.demo.study.livedata.base.NameActivity
+import com.mika.demo.study.video.VideoActivity
+import com.mika.requester.Connector
 import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.OkHttpClient
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,8 +22,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val okHttpClient = OkHttpClient.Builder()
+                //...
+                .build()
+        Connector.init(okHttpClient)
+
         button.setOnClickListener {
             startNameActivityForResult()
+        }
+
+        go_video.setOnClickListener {
+            this.startActivity(Intent(this, VideoActivity::class.java))
         }
 
     }

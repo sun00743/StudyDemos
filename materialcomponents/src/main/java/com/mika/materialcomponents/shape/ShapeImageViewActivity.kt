@@ -24,7 +24,8 @@ class ShapeImageViewActivity : AppCompatActivity() {
         val shapeModel = ShapeAppearanceModel.Builder()
 //                .setAllCorners(RoundedCornerTreatment())
                 .setAllCorners(CornerFamily.ROUNDED, intToDp(8))
-                .setAllEdges(TriangleEdgeTreatment(intToDp(16), true))
+//                .setAllEdges(TriangleEdgeTreatment(intToDp(16), true))
+                .setAllEdges(MikaDemoEdgeTreatment())
                 .build()
         textView.background = MaterialShapeDrawable(shapeModel).apply {
             setTint(Color.BLUE)
