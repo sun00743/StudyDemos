@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MikaRoomDbDemo</string>
+    <string name="search_by_code">输入code搜索商品</string>
+    <string name="goods_manage_code_hint">输入code（必填）</string>
+    <string name="goods_manage_name_hint">输入商品名（必填）</string>
+    <string name="goods_manage_spec_hint">输入规格</string>
+    <string name="goods_manage_unit_hint">输入单位</string>
+    <string name="goods_manage_type_hint">输入类别</string>
+    <string name="goods_manage_price_hint">输入价格（必填）</string>
+    <string name="commit">提交</string>
+</resources>

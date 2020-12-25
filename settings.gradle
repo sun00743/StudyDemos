@@ -1,3 +1,5 @@
+include ':room'
+include ':rxdemo'
 include ':materialcomponents'
 include ':recyclerviewdemo'
 include ':app', ':nestedscrolldemo', ':dagger', ':coroutines'

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".goodsmanage.GoodsManageActivity">
+
+    <EditText
+        android:id="@+id/goods_manage_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/goods_manage_code_hint"/>
+
+    <EditText
+        android:id="@+id/goods_manage_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/goods_manage_name_hint"/>
+
+    <EditText
+        android:id="@+id/goods_manage_spec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxLength="20"
+        android:hint="@string/goods_manage_spec_hint"/>
+
+    <EditText
+        android:id="@+id/goods_manage_unit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxLength="1"
+        android:hint="@string/goods_manage_unit_hint"/>
+
+    <EditText
+        android:id="@+id/goods_manage_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxLength="20"
+        android:hint="@string/goods_manage_type_hint"/>
+
+    <EditText
+        android:id="@+id/goods_manage_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="numberDecimal"
+        android:hint="@string/goods_manage_price_hint"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/goods_manage_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        android:onClick="commitGoods"
+        android:text="@string/commit"/>
+
+    <ProgressBar
+        android:id="@+id/goods_manage_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        tools:visibility="visible"/>
+
+</LinearLayout>
