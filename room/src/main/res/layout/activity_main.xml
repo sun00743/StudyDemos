@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Toolbar"
+            app:menu=""/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/goods_list_search_container"
         android:layout_width="match_parent"
@@ -30,9 +43,9 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="?attr/actionBarItemBackground"
+        android:onClick="searchGoods"
         android:scaleType="center"
         android:src="@drawable/ic_baseline_search_24"
-        android:onClick="searchGoods"
         app:layout_constraintBottom_toBottomOf="@id/goods_list_search_container"
         app:layout_constraintEnd_toEndOf="@id/goods_list_search_container"
         app:layout_constraintTop_toTopOf="@id/goods_list_search_container" />

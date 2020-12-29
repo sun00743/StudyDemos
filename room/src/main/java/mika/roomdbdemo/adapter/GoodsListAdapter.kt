@@ -7,9 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hd123.roomdbdemo.R
 import mika.roomdbdemo.entity.Goods
 import kotlinx.android.synthetic.main.item_goods_list.view.*
+import mika.roomdbdemo.R
 
 class GoodsListAdapter : ListAdapter<Goods, GoodsListAdapter.GoodsViewHolder>(GoodsDiffer()) {
 

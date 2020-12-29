@@ -1,18 +1,22 @@
 package mika.roomdbdemo
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.lifecycle.Observer
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.hd123.roomdbdemo.R
 import mika.roomdbdemo.adapter.GoodsListAdapter
 import mika.roomdbdemo.entity.Goods
 import mika.roomdbdemo.goodsmanage.GoodsManageActivity
 import mika.roomdbdemo.viewmodel.GoodsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import mika.roomdbdemo.entity.User
 
 /**
  * 主界面，商品展示，查询
@@ -24,6 +28,11 @@ class MainActivity : AppCompatActivity(), GoodsListAdapter.OnItemClickedListener
     private var goodsViewModel: GoodsViewModel? = null
 
     private var mAdapter = GoodsListAdapter()
+
+    private val key_is_user_insert = "is_user_insert"
+    private val sharedPreferences: SharedPreferences by lazy {
+        getSharedPreferences("mika", Context.MODE_PRIVATE)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,15 +51,16 @@ class MainActivity : AppCompatActivity(), GoodsListAdapter.OnItemClickedListener
     private fun init() {
         goodsViewModel = GoodsViewModel.Factory().create(GoodsViewModel::class.java)
 
-//        AppExecutors.dbIO().execute {
-//            val userDao = MyApplication.instance.database.userDao()
-//            userDao.insert(User(name = "mika1"))
-//            userDao.insert(User(name = "mika3"))
-//
-//            val loadAllUser = userDao.loadAllUser()
-//
-//            Log.d("mika", "all user list: $loadAllUser")
-//        }
+        if (sharedPreferences.getBoolean("key_is_user_insert", false)) {
+            AppExecutors.dbIO().execute {
+                val userDao = MyApplication.instance.database.userDao()
+                userDao.insert(User(name = "mika1"))
+                userDao.insert(User(name = "mika3", preferenceType = "03"))
+            }
+            sharedPreferences.edit {
+                putBoolean("key_is_user_insert", true)
+            }
+        }
     }
 
     private fun setRecyclerView() {
@@ -83,15 +93,15 @@ class MainActivity : AppCompatActivity(), GoodsListAdapter.OnItemClickedListener
      */
     override fun onItemLongClicked(goods: Goods, adapterPosition: Int) {
         MaterialAlertDialogBuilder(this)
-            .setMessage("delete goods ?")
-            .setPositiveButton("yes") { dialog, which ->
-                goodsViewModel?.deleteGoods(goods, adapterPosition)
-                mAdapter.notifyItemRemoved(adapterPosition)
-            }
-            .setNegativeButton("no") { dialog, which ->
-                dialog.dismiss()
-            }
-            .create().show()
+                .setMessage("delete goods ?")
+                .setPositiveButton("yes") { dialog, which ->
+                    goodsViewModel?.deleteGoods(goods, adapterPosition)
+                    mAdapter.notifyItemRemoved(adapterPosition)
+                }
+                .setNegativeButton("no") { dialog, which ->
+                    dialog.dismiss()
+                }
+                .create().show()
     }
 
     /**

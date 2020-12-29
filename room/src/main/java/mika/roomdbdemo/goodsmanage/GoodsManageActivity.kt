@@ -6,10 +6,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.hd123.roomdbdemo.R
 import mika.roomdbdemo.entity.Goods
 import mika.roomdbdemo.viewmodel.GoodsViewModel
 import kotlinx.android.synthetic.main.activity_goods_manage.*
+import mika.roomdbdemo.R
 import java.util.*
 
 const val GOODS_MANAGE_CREATE = 0
@@ -127,5 +127,8 @@ class GoodsManageActivity : AppCompatActivity() {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
+    override fun onBackPressed() {
+        finish()
+    }
 
 }

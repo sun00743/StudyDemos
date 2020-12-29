@@ -1,10 +1,8 @@
 package mika.roomdbdemo.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import mika.roomdbdemo.entity.User
+import mika.roomdbdemo.entity.UserPreGoods
 
 @Dao
 interface UserDao {
@@ -14,5 +12,9 @@ interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)
+
+    @Transaction
+    @Query("SELECT * FROM user")
+    fun loadUserPreGoods(): List<UserPreGoods>
 
 }
