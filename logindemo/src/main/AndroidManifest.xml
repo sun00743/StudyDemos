@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyDemos">
-        <activity android:name="com.example.logindemo.bussiness.home.MainActivity"></activity>
+
+        <activity
+            android:name=".login.ui.login.LoginActivity"
+            android:label="@string/title_activity_login">
+
+        </activity>
+
+        <activity android:name=".bussiness.home.MainActivity" />
+
     </application>
 
 </manifest>
