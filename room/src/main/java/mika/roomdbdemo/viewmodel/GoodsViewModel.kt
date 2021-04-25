@@ -85,6 +85,19 @@ class GoodsViewModel(private val database: AppDataBase) : ViewModel() {
         mGoodsList.value?.removeAt(positon)
     }
 
+    fun updateTest() {
+        AppExecutors.dbIO().execute {
+            val goodsList = database.goodsDao().searchGoods(1)
+            val goods = goodsList[0]
+            goods.id = goods.id?.plus(10)
+            goods.name += "mika_"
+            val value = mGoodsList.value!!
+            value.removeAt(2)
+//            value.add(0, goods)
+            mGoodsList.postValue(ArrayList(value))
+        }
+    }
+
     /**
      * ViewModel Factory
      */

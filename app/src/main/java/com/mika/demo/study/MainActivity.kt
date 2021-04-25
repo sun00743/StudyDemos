@@ -7,6 +7,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.mika.demo.study.activityreuslt.OnActivityResultListener
 import com.mika.demo.study.activityreuslt.OnResultFragment
+import com.mika.demo.study.dialogvm.DialogFragmentSimple
+import com.mika.demo.study.dialogvm.DialogUseVM
 import com.mika.demo.study.livedata.base.NameActivity
 import com.mika.demo.study.video.VideoActivity
 import com.mika.requester.Connector
@@ -35,6 +37,10 @@ class MainActivity : AppCompatActivity() {
             this.startActivity(Intent(this, VideoActivity::class.java))
         }
 
+        go_dialog_vm.setOnClickListener {
+            showDialogUseVM()
+        }
+
     }
 
     private fun startNameActivityForResult() {
@@ -61,6 +67,24 @@ class MainActivity : AppCompatActivity() {
 //        this@MainActivity.startActivityForResult()
 
         //上面代码封装一下
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("mika_activity", "pause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("mika_activity", "stop")
+    }
+
+    private fun showDialogUseVM() {
+        val dialogUseVM = DialogUseVM(this)
+        dialogUseVM.setTitle("dialog use vm")
+        dialogUseVM.show()
+
+//        DialogFragmentSimple().show(supportFragmentManager, "")
     }
 
 }

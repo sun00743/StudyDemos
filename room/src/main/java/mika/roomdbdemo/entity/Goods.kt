@@ -9,18 +9,18 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "goods")
 data class Goods(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "gid") val id: Int? = null,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "gid") var id: Int? = null,
 
     /**
      * 条码
      */
     val code: Long,
-    val name: String,
+    var name: String,
 
     /**
      * 商品规格
      */
-    val spec: String? = "",
+    var spec: String? = "",
 
     /**
      * 数量单位

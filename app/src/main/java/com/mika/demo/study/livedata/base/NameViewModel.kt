@@ -18,6 +18,7 @@ class NameViewModel : ViewModel(), LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun loadCurrentName() {
+        Log.d("mika_NameViewModel", "create call: $this")
         mCurrentName.value = "mika_001"
     }
 
@@ -38,5 +39,11 @@ class NameViewModel : ViewModel(), LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
         Log.d("mika_lifecycle", "destroy event")
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+
+        Log.d("mika_NameViewModel", "cleared")
     }
 }

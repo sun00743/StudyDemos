@@ -1,12 +1,11 @@
 package com.mika.recyclerviewdemo.concatadapter
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ConcatAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mika.recyclerviewdemo.R
 import kotlinx.android.synthetic.main.activity_concat_adapter.*

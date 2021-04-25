@@ -43,6 +43,11 @@ class MainActivity : AppCompatActivity(), GoodsListAdapter.OnItemClickedListener
         setDataObserver()
 
         goodsViewModel?.loadGoodsList()
+
+        goods_list_test_update.setOnClickListener {
+            goodsViewModel?.updateTest()
+        }
+
     }
 
     /**
@@ -71,8 +76,9 @@ class MainActivity : AppCompatActivity(), GoodsListAdapter.OnItemClickedListener
     private fun setDataObserver() {
         goodsViewModel?.mGoodsList?.observe(this, Observer {
             goods_list_progress.visibility = View.GONE
-
-            mAdapter.submitList(it)
+            Log.d("mika", "mGoodsList update")
+            mAdapter.setList(ArrayList(it))
+//            mAdapter.submitList(it)
         })
 
         //加载状态observer

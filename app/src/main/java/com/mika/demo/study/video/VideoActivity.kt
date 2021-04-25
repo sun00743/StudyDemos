@@ -58,5 +58,13 @@ class VideoActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+    }
+
 
 }

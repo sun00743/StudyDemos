@@ -15,6 +15,12 @@ class GoodsListAdapter : ListAdapter<Goods, GoodsListAdapter.GoodsViewHolder>(Go
 
     var mListener: OnItemClickedListener? = null
 
+    fun setList(list: List<Goods>) {
+        val diffResult = DiffUtil.calculateDiff(GoodsDifferUtil(currentList, list), true)
+        diffResult.dispatchUpdatesTo(this)
+        submitList(list)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoodsViewHolder {
         return GoodsViewHolder(
             LayoutInflater.from(parent.context)
@@ -64,6 +70,21 @@ class GoodsListAdapter : ListAdapter<Goods, GoodsListAdapter.GoodsViewHolder>(Go
                     oldItem.type == newItem.type &&
                     oldItem.date == newItem.date
         }
+    }
+
+    class GoodsDifferUtil(private val oldList: List<Goods>,
+                          private val newList: List<Goods>): DiffUtil.Callback(){
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+            false
+
+        override fun getOldListSize(): Int = oldList.size
+
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+            false
+
     }
 
     interface OnItemClickedListener {

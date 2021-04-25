@@ -38,6 +38,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat"
     implementation "com.google.android.material:material:$material_components"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayout_version"
+    implementation "androidx.activity:activity-ktx:$activity_ktx"
 
     testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test:runner:1.1.0'

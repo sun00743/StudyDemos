@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -61,6 +62,11 @@ class ExpandFragment : Fragment() {
         }
         decrease.setOnClickListener {
             viewModel.setKeyData(keyData--)
+        }
+
+        setFragmentResultListener("demo_result") { requestKey, bundle ->
+            val string = bundle.getString("value", "nothing")
+            Log.d("mika_fragment", "result: ${string}")
         }
     }
 

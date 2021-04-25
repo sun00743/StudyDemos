@@ -34,7 +34,7 @@ android {
 
 dependencies {
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ktx"
     implementation "io.reactivex.rxjava3:rxjava:3.0.8"
 
     implementation "com.google.android.material:material:$material_components"
