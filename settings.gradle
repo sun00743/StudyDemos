@@ -1,3 +1,4 @@
+include ':logindemo'
 include ':room'
 include ':rxdemo'
 include ':materialcomponents'
