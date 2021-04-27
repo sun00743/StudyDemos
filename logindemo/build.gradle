@@ -8,13 +8,23 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.logindemo"
-        minSdkVersion 26
+        applicationId "com.hd123.kds"
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //todo
+        manifestPlaceholders = [
+                PUSH_APP_KEY   : System.getenv('PUSH_APP_KEY') ?: "todo",
+                PUSH_APP_SECRET: System.getenv('PUSH_APP_SECRET') ?: "todo",
+        ]
+    }
+
+    viewBinding {
+        enabled = true
     }
 
     buildTypes {
@@ -30,19 +40,34 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def fileName = "${defaultConfig.applicationId}-${defaultConfig.versionName}-${defaultConfig.versionCode}.apk"
+            fileName = fileName.replace("com.hd123.", "")
+            outputFileName = fileName
+        }
+    }
+
 }
 
 dependencies {
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //ktx
     implementation "androidx.activity:activity-ktx:$activity_ktx"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ktx"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ktx"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_ktx"
 
     implementation "androidx.core:core-ktx:$ktx"
     implementation "androidx.core:core:$core_version"
 
     implementation "androidx.appcompat:appcompat:$appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayout_version"
-    
+    //coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines"
 
@@ -50,9 +75,20 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
 
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //rx android
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
+    //mmkv储存
+    implementation 'com.tencent:mmkv:1.2.7'
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.14.0"
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+    //log
+    implementation 'log4j:log4j:1.2.17'
+    //aliPush
+    implementation 'com.hd123.ideal:push:0.0.10'
 }
