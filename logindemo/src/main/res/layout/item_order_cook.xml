@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="236dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="36dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_item_store_selector"
+        android:minHeight="142dp">
+
+        <ImageView
+            android:id="@+id/img_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_launcher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/order_code"
+            android:layout_width="wrap_content"
+            android:maxWidth="106dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="46dp"
+            android:textStyle="bold"
+            android:textColor="#ff151515"
+            android:textSize="34sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="99999"/>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:maxWidth="106dp"
+            android:layout_marginTop="46dp"
+            android:layout_marginEnd="8dp"
+            android:layout_height="wrap_content"
+            android:textColor="#ff151515"
+            android:textSize="26sp"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="1小时34分钟"/>
+
+        <TextView
+            android:id="@+id/state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff333333"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/time"
+            app:layout_constraintStart_toStartOf="@id/time"
+            app:layout_constraintTop_toBottomOf="@id/time"
+            tools:text="已等待"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/order_date"-->
+<!--            android:layout_width="110dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:textColor="#ff333333"-->
+<!--            android:textSize="14sp" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/order_cook_over"
+        android:layout_width="270dp"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_order_action_cook_over"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:text="@string/order_action_cook_over"
+        android:textColor="#ffffffff"
+        android:textSize="20sp" />
+
+</FrameLayout>
