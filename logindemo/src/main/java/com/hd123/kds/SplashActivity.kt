@@ -7,10 +7,13 @@ import android.os.Handler
 import android.os.Looper
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.hd123.kds.bussiness.home.MainActivity
 import com.hd123.kds.databinding.ActivitySplashBinding
 import com.hd123.kds.login.ui.LoginActivity
+import com.hd123.kds.user.UserManager
 import com.hd123.kds.util.log.AppLogger
 import com.hd123.kds.util.SetHome
+import com.hd123.kds.util.Values
 
 class SplashActivity : AppCompatActivity() {
 
@@ -52,8 +55,14 @@ class SplashActivity : AppCompatActivity() {
         AppLogger.init()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
-        }, 2000)
+            if (isHasLogin()) {
+                startActivity(Intent(this, MainActivity::class.java))
+            } else {
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
+        }, 1000)
     }
+
+    private fun isHasLogin() = Values.isLogined && UserManager.getUserCache() != null
 
 }

@@ -13,6 +13,8 @@ class LoginRepository {
 
     fun logout() {
         dataSource.logout()
+
+        Values.isLogined = false
     }
 
     fun login(username: String, password: String): Result<User> {
@@ -25,7 +27,6 @@ class LoginRepository {
 
         if (result is Result.Success) {
             UserManager.setUser(result.data)
-            Values.isLogined = true
             // TODO: 2021/4/26 after Login
         }
 

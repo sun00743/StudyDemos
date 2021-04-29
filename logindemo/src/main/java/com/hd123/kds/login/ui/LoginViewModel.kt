@@ -54,14 +54,16 @@ class LoginViewModel : BaseViewModel() {
                 errorMsg.value = result.exception.message
                 return@coroutineLaunch
             }
-
-            //todo
+// TODO: 2021/4/28 use this
+/*
             val bindResult = withContext(Dispatchers.IO) {
                 PushManager.bindAccount()
             }
             if (!bindResult.result) {
                 errorMsg.value = bindResult.message ?: "推送服务登录异常"
+                return@coroutineLaunch
             }
+*/
 
             isLoading = false
             loginSuccess.value = Unit

@@ -11,4 +11,12 @@ sealed class Result<out T : Any> {
             is Error -> "Error[exception=$exception]"
         }
     }
+
+    fun getErrorMsg(): String {
+        if (this is Error) {
+            return this.exception.message ?: ""
+        }
+        return ""
+    }
+
 }
