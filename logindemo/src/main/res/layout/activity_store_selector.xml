@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="24dp"
+    android:background="@color/primary_black"
     tools:context=".bussiness.selectstore.StoreSelectorActivity">
 
     <View
@@ -27,7 +29,7 @@
     <TextView
         android:id="@+id/selector_back"
         android:layout_width="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="80dp"
         android:layout_height="64dp"
         android:background="?android:selectableItemBackgroundBorderless"
         android:drawableStart="@drawable/ic_baseline_arrow_back_ios_24"
@@ -45,27 +47,25 @@
         android:id="@+id/tv_selector_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:textColor="@color/login_input_hint"
+        android:layout_marginTop="96dp"
+        android:textColor="#D3D3D3"
         android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_icon"
         tools:text="选择门店" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_selector_items"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="64dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_selector_title"
         tools:listitem="@layout/item_store_selector_login" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

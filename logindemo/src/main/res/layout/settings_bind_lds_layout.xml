@@ -16,7 +16,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/bg_settings_bind_lds_confirm"
+        android:background="@drawable/bg_btn_primary"
         android:gravity="center"
         android:text="@string/bind_lds_confirm"
         android:textSize="24sp"

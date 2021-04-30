@@ -16,13 +16,10 @@ open class BaseViewModel: ViewModel() {
 
     fun coroutineLaunch(loadingFlag : MutableLiveData<Boolean> = this.loadingFlag,
                         block: suspend CoroutineScope.() -> Unit) {
-        if (isLoading) return
-        isLoading = true
         loadingFlag.value = true
         viewModelScope.launch {
             block.invoke(this)
             loadingFlag.value = false
-            isLoading = false
         }
     }
 

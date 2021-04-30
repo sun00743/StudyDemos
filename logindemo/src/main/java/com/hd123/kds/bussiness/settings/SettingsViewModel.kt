@@ -8,6 +8,7 @@ import com.hd123.kds.base.data.ResultLiveData
 import com.hd123.kds.base.network.LDSRequestConfig
 import com.hd123.kds.bussiness.selectstore.data.StoreSelectorRepository
 import com.hd123.kds.bussiness.settings.data.LDSRepository
+import com.hd123.kds.login.data.LoginRepository
 import com.hd123.kds.model.store.Department
 import com.hd123.kds.model.store.Store
 import com.hd123.kds.user.UserManager
@@ -27,10 +28,13 @@ class SettingsViewModel : BaseViewModel() {
 
     val storeList = ResultLiveData<List<Store>>()
     val departmentList = ResultLiveData<List<Department>>()
+    val logoutFlag = ResultLiveData<Boolean>()
 
     private val selectorRepository = StoreSelectorRepository()
 
     private val ldsRepository = LDSRepository()
+
+    private val loginRepository = LoginRepository()
 
     fun loadStore() {
         coroutineLaunch {
@@ -73,6 +77,12 @@ class SettingsViewModel : BaseViewModel() {
         departmentList.resultData?.get(position)?.apply {
             selectorRepository.selectDepartment(this)
             currentDepartment = this
+        }
+    }
+
+    fun logout() {
+        coroutineLaunch {
+            loginRepository.logout()
         }
     }
 

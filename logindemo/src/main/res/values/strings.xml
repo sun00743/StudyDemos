@@ -31,8 +31,21 @@
 
     <string name="order_manage_show_type_page">切换为分类显示</string>
     <string name="order_manage_show_all_page">切换为全部显示</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="order_action_cook_over">制作完成</string>
+    <string name="order_action_pick_up">确认取餐</string>
+    <string name="order_manage_all">全部订单</string>
+    <string name="order_manage_cooking">制作中</string>
+    <string name="order_manage_ready">待取餐</string>
+    <string name="order_manage_order_date">下单时间：\n %s</string>
+    <string name="has_waited">已等待</string>
+
+    <string name="do_search">查询</string>
+    <string name="search_input_hint">请输入取餐号</string>
+    <string name="settings_logout_confirm">确认要退出？</string>
+    <string name="select_store">选择门店</string>
+    <string name="search_column_name">取餐号</string>
+    <string name="search_column_date">下单时间</string>
+    <string name="search_column_state">订单状态</string>
 
 </resources>

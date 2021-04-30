@@ -9,7 +9,9 @@ import com.hd123.kds.model.store.Store
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class StoreSelectorViewModel(var mode: Int) : BaseViewModel() {
+class StoreSelectorViewModel : BaseViewModel() {
+
+    var mode: Int = SELECT_MODE_STORE
 
     private val selectorRepository = StoreSelectorRepository()
 

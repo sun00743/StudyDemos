@@ -1,19 +1,21 @@
 package com.hd123.kds.login.ui
 
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import com.hd123.kds.R
-import com.hd123.kds.SplashActivity
 import com.hd123.kds.base.component.BaseActivity
 import com.hd123.kds.bussiness.home.MainActivity
 import com.hd123.kds.bussiness.selectstore.StoreSelectorActivity
 import com.hd123.kds.databinding.ActivityLoginBinding
 import com.hd123.kds.extension.afterTextChanged
+import com.hd123.kds.extension.dpToPx
 import com.hd123.kds.user.UserManager
 import com.hd123.kds.util.DateUtil
 import com.hd123.kds.util.Values
@@ -104,6 +106,19 @@ class LoginActivity : BaseActivity() {
 
         mBinding.usernameClear.setOnClickListener { mBinding.edtUsername.text.clear() }
         mBinding.passwordClear.setOnClickListener { mBinding.edtPassword.text.clear() }
+
+        addOnKeyboardListener()
+    }
+
+    private fun addOnKeyboardListener() {
+        val root = window.decorView.findViewById<View>(android.R.id.content)
+        val vh = dpToPx(24 + 48)
+        root.viewTreeObserver.addOnGlobalLayoutListener {
+            val rect = Rect()
+            root.getWindowVisibleDisplayFrame(rect)
+            val heightDiff = root.rootView.height - rect.bottom
+            onKeyBoardShow(heightDiff - vh > 300)
+        }
     }
 
     private fun checkLoginData() {
@@ -111,7 +126,16 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun login() {
+        if (mViewModel.loginForm.value?.isDataValid == false) {
+            return
+        }
         mViewModel.login(mBinding.edtUsername.text.toString(), mBinding.edtPassword.text.toString())
+    }
+
+    private fun onKeyBoardShow(isShow: Boolean) {
+        val layoutParams = mBinding.bgInput.layoutParams as ConstraintLayout.LayoutParams
+        layoutParams.verticalBias = if (isShow) 0.28f else 0.6f
+        mBinding.bgInput.requestLayout()
     }
 
     private fun showLoginFailed(errorString: String) {

@@ -1,15 +1,19 @@
 package com.hd123.kds.bussiness.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.DialogCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hd123.kds.R
 import com.hd123.kds.base.component.BaseFragment
 import com.hd123.kds.databinding.ItemStoreSelectorBinding
 import com.hd123.kds.databinding.SettingsFragmentBinding
+import com.hd123.kds.login.ui.LoginActivity
 import com.hd123.kds.model.store.Department
 import com.hd123.kds.model.store.Store
 import com.hd123.kds.user.UserManager
@@ -84,6 +88,10 @@ class SettingsFragment : BaseFragment() {
             }
         }
 
+        mBinding.tvLogout.setOnClickListener {
+            logout()
+        }
+
         initRecyclerView()
     }
 
@@ -101,12 +109,15 @@ class SettingsFragment : BaseFragment() {
     }
 
     private fun initObserver() {
-        mViewModel.loadingFlag.observe(this, {
+        mViewModel.loadingFlag.observe(viewLifecycleOwner, {
             mBinding.pbLoading.visibility = if (it) View.VISIBLE else View.INVISIBLE
         })
 
         mViewModel.storeList.observeWithToast(this, {
             (mBinding.rvSwitcherStoreList.adapter as StoreAdapter).addData(it)
+        })
+        mViewModel.departmentList.observeWithToast(this, {
+            (mBinding.rvSwitcherDepartmentList.adapter as DepartmentAdapter).addData(it)
         })
     }
 
@@ -120,6 +131,22 @@ class SettingsFragment : BaseFragment() {
             return false
         }
         return true
+    }
+
+    /**
+     * 退出登录
+     */
+    private fun logout() {
+        AlertDialog.Builder(requireContext())
+                .setMessage(R.string.settings_logout_confirm)
+                .setPositiveButton("确认") { dialog, i ->
+                    dialog.dismiss()
+                    mViewModel.logout()
+                    startActivity(Intent(activity, LoginActivity::class.java))
+                }
+                .setNegativeButton("取消") {dialog, i -> dialog.dismiss()}
+                .create()
+                .show()
     }
 
     private fun hideContent() {
@@ -171,7 +198,6 @@ class SettingsFragment : BaseFragment() {
             }
             tvCode.text = item.code
             tvName.text = item.name
-            executePendingBindings()
         }
     })
 
@@ -190,7 +216,6 @@ class SettingsFragment : BaseFragment() {
             tvCode.text = item.name
             imgIcon.setImageResource(R.mipmap.cutting_bu)
             tvName.visibility = View.GONE
-            executePendingBindings()
         }
     })
 

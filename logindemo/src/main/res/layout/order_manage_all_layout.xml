@@ -7,7 +7,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/order_all"
-        android:name="com.hd123.kds.bussiness.ordermanage.OrderFragment"
+        android:name="com.hd123.kds.bussiness.ordermanage.order.OrderFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"

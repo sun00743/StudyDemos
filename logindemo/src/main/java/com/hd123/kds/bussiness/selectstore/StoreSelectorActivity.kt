@@ -4,17 +4,20 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.widget.BaseAdapter
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hd123.kds.R
 import com.hd123.kds.base.component.BaseActivity
 import com.hd123.kds.bussiness.home.MainActivity
 import com.hd123.kds.databinding.ActivityStoreSelectorBinding
-import com.hd123.kds.databinding.ItemStoreSelectorBinding
 import com.hd123.kds.databinding.ItemStoreSelectorLoginBinding
 import com.hd123.kds.model.store.Department
 import com.hd123.kds.model.store.Store
 import com.hd123.kds.widget.BindingHolderAdapter
+
 
 const val EXTRA_SELECT_MODE = "mode"
 
@@ -47,18 +50,33 @@ class StoreSelectorActivity : BaseActivity() {
     }
 
     private fun initObserver() {
-        mViewModel.storeList.observeWithToast(this, {
-            (mBinding.rvSelectorItems.adapter as StoreAdapter).addData(it)
-        }, {
-            // TODO: 2021/4/28
-        })
+        if (mViewModel.mode == SELECT_MODE_STORE) {
+            mViewModel.storeList.observeWithToast(this, {
+                (mBinding.rvSelectorItems.adapter as StoreAdapter).addData(it)
+            }, {
+                // TODO: 2021/4/28
+            })
+        } else {
+            mViewModel.departmentList.observeWithToast(this, {
+                (mBinding.rvSelectorItems.adapter as DepartmentAdapter).addData(it)
+            }) {
+
+            }
+        }
     }
 
     private fun initView() {
         mBinding.rvSelectorItems.apply {
-            layoutManager = GridLayoutManager(this@StoreSelectorActivity, 3)
+            layoutManager = GridLayoutManager(context, 3)
             itemAnimator = null
             adapter = if (mViewModel.isStoreMode()) StoreAdapter() else DepartmentAdapter()
+        }
+
+        mBinding.tvSelectorTitle.setText(if (mViewModel.mode == SELECT_MODE_STORE)
+            R.string.switcher_store else R.string.switcher_department)
+
+        mBinding.selectorBack.setOnClickListener {
+            finish()
         }
     }
 
@@ -68,7 +86,7 @@ class StoreSelectorActivity : BaseActivity() {
     private fun selectStore(pos: Int) {
         mViewModel.selectStore(pos)
         if (mViewModel.checkSingleDepartment()) {
-             startActivity(Intent(this, MainActivity::class.java))
+            startMain()
         } else {
             StoreSelectorActivity.start(this, SELECT_MODE_PART)
         }
@@ -79,7 +97,13 @@ class StoreSelectorActivity : BaseActivity() {
      */
     private fun selectDepartment(pos: Int) {
         mViewModel.selectDepartment(pos)
-        startActivity(Intent(this, MainActivity::class.java))
+        startMain()
+    }
+
+    private fun startMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 
     inner class StoreAdapter : BindingHolderAdapter<Store, ItemStoreSelectorLoginBinding>(
@@ -91,7 +115,6 @@ class StoreSelectorActivity : BaseActivity() {
 
             tvCode.text = item.code
             tvName.text = item.name
-            executePendingBindings()
         }
     })
 
@@ -104,7 +127,6 @@ class StoreSelectorActivity : BaseActivity() {
             tvName.visibility = View.GONE
             tvCode.text = item.name
             imgIcon.setImageResource(R.mipmap.cutting_bu)
-            executePendingBindings()
         }
     })
 }

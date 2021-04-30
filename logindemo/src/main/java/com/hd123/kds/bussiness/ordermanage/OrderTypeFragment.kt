@@ -1,15 +1,15 @@
 package com.hd123.kds.bussiness.ordermanage
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hd123.kds.R
 import com.hd123.kds.base.component.BaseFragment
-import com.hd123.kds.databinding.FragmentOrderManageHomeBinding
+import com.hd123.kds.bussiness.ordermanage.order.LOAD_DATA_TYPE_COOKING
+import com.hd123.kds.bussiness.ordermanage.order.LOAD_DATA_TYPE_READY
+import com.hd123.kds.bussiness.ordermanage.order.OrderFragment
 import com.hd123.kds.databinding.FragmentOrderTypeBinding
-import com.hd123.kds.widget.BaseFragmentStateAdapter
 
 class OrderTypeFragment : BaseFragment() {
 
@@ -21,18 +21,19 @@ class OrderTypeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mBinding.typePager.adapter = object : BaseFragmentStateAdapter(this, mBinding.typePager) {
-            override fun initFragments(): ArrayList<BaseFragment> =
-                    arrayListOf(
-                            OrderFragment.newInstance(LOAD_DATA_TYPE_COOKING),
-                            OrderFragment.newInstance(LOAD_DATA_TYPE_WAITING)
-                    )
+        childFragmentManager.beginTransaction().apply {
+            add(R.id.order_type_cooking, OrderFragment.newInstance(LOAD_DATA_TYPE_COOKING))
+            add(R.id.order_type_ready, OrderFragment.newInstance(LOAD_DATA_TYPE_READY))
+            commitNow()
         }
     }
 
     override fun onCurrent() {
         super.onCurrent()
-        // TODO: 2021/4/29
+
+        childFragmentManager.fragments.forEach {
+            (it as? BaseFragment)?.onCurrent()
+        }
     }
 
     companion object {

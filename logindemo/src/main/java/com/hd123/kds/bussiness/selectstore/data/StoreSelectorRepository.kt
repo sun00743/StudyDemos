@@ -1,5 +1,6 @@
 package com.hd123.kds.bussiness.selectstore.data
 
+import com.hd123.kds.BuildConfig
 import com.hd123.kds.base.data.Result
 import com.hd123.kds.base.network.NetWorkMgr
 import com.hd123.kds.model.User
@@ -25,7 +26,7 @@ class StoreSelectorRepository {
 //            loadStore.data
             return Result.Success(fakeStore())
         } catch (e: Throwable) {
-            return Result.Error(IOException("Error logging in", e))
+            return Result.Error(IOException(e))
         }
 
         return result
@@ -62,7 +63,7 @@ class StoreSelectorRepository {
             // TODO: 2021/4/28
 //            val loadStore = NetWorkMgr.getService(StoreService::class.java).loadStore(user)
 //            loadStore.data
-            return Result.Success(arrayListOf(Department("asdasd", "333")))
+            return Result.Success(arrayListOf(Department("asdasd", "333"), Department("按时艰苦的拉伸", "444")))
         } catch (e: Throwable) {
             return Result.Error(IOException("Error logging in", e))
         }

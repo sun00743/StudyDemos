@@ -12,4 +12,5 @@
     <color name="primary_black">#151515</color>
     <color name="tool_bar">#333333</color>
     <color name="login_input_hint">#76FFFFFF</color>
+    <color name="sub_title">#D3D3D3</color>
 </resources>
