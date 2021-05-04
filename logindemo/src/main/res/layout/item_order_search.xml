@@ -4,34 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="isOnline"
+            type="Boolean" />
 
-
+        <variable
+            name="changeBg"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@{changeBg? @color/order_search_list: @color/order_search_list_light}">
 
         <TextView
+            android:id="@+id/order_code"
             android:layout_width="wrap_content"
             android:layout_height="88dp"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="24dp"
             android:drawablePadding="8dp"
             android:gravity="center_vertical"
-            android:text="@string/search_column_name"
+            tools:text="@string/search_column_name"
             android:textColor="@color/white"
             android:textSize="24sp"
+            android:drawableStart="@{isOnline? @drawable/tag_p_search: @drawable/tag_dian_search}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:drawableStart="@drawable/tag_p_search" />
+            tools:drawableStart="@drawable/tag_p_search"/>
 
 
         <TextView
+            android:id="@+id/order_time"
             android:layout_width="wrap_content"
             android:layout_height="88dp"
             android:layout_marginStart="24dp"
             android:gravity="center_vertical"
-            android:text="@string/search_column_date"
+            tools:text="@string/search_column_date"
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,15 +50,15 @@
 
 
         <TextView
+            android:id="@+id/order_state"
             android:layout_width="wrap_content"
             android:layout_height="88dp"
-            android:layout_marginStart="24dp"
             android:gravity="center_vertical"
-            android:text="@string/search_column_state"
+            tools:text="@string/search_column_state"
             android:textColor="@color/sub_title"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.74"
+            app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

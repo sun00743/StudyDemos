@@ -15,7 +15,20 @@ class OrderRepository {
     fun loadOrderList(mode: Int): Result<List<Order>> {
         val result = try {
             // TODO: 2021/4/30 service load order list
+            // TODO: 2021/5/5 send to LDS
 //                service.load(mode)
+            return Result.Success(fakeOrder())
+        } catch (e: Exception) {
+            logger.error(e)
+            return Result.Error(IOException(e))
+        }
+        return result
+    }
+
+    fun searOrder(code: String): Result<List<Order>> {
+        val result = try {
+            // TODO: 2021/4/30 service load order list
+//                service.searOrder(mode)
             return Result.Success(fakeOrder())
         } catch (e: Exception) {
             logger.error(e)

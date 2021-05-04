@@ -48,4 +48,9 @@
     <string name="search_column_date">下单时间</string>
     <string name="search_column_state">订单状态</string>
 
+    <string name="order_state_finish">已完成</string>
+    <string name="order_state_cooking">制作中</string>
+    <string name="order_state_ready">待取餐</string>
+    <string name="order_search_error_input_empty">取餐号不能为空</string>
+
 </resources>

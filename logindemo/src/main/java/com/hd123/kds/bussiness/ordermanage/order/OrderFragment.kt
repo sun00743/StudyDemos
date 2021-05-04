@@ -1,6 +1,7 @@
 package com.hd123.kds.bussiness.ordermanage.order
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,7 +56,7 @@ class OrderFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mViewModel.mode = arguments?.getInt(LOAD_DATA_TYPE) ?: LOAD_DATA_TYPE_ALL
+        mViewModel.init(arguments?.getInt(LOAD_DATA_TYPE) ?: LOAD_DATA_TYPE_ALL)
         initView()
         initObserver()
         loadData()
@@ -92,6 +93,7 @@ class OrderFragment : BaseFragment() {
     override fun onCurrent() {
         super.onCurrent()
         // TODO: 2021/4/30
+        Log.d("mika_order", "onCurrent: " + mViewModel.mode)
     }
 
     private fun getTitle(): Int = when (mViewModel.mode) {

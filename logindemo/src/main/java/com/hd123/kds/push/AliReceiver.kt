@@ -5,7 +5,7 @@ import com.hd123.push.listener.IAliReceiverCallback
 import com.hd123.push.model.PushParam
 import org.apache.log4j.Logger
 
-class AliReceiver : IAliReceiverCallback {
+class AliReceiver(private val pushObserver: ArrayList<PushManager.PushObserver>) : IAliReceiverCallback {
 
     private val logger = Logger.getLogger(AliReceiver::class.java)
     
@@ -16,6 +16,7 @@ class AliReceiver : IAliReceiverCallback {
     private fun handle(param: PushParam) {
         val msg = HDApplication.GSON.toJson(param)
         logger.info("接收到通知/消息 $msg")
+        pushObserver.forEach { it.onReceiver() }
         // TODO: 2021/4/27  
 //        handleParam(param.extraMap)
     }

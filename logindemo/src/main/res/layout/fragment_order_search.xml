@@ -1,102 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="8dp"
-    tools:context=".bussiness.ordersearch.OrderSearchFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/do_search"
-        android:layout_width="178dp"
-        android:layout_height="66dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/bg_btn_primary"
-        android:gravity="center"
-        android:text="@string/do_search"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <EditText
-        android:id="@+id/search_input"
-        android:layout_width="0dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_saerch_input"
-        android:drawableStart="@drawable/ic_baseline_search_24"
-        android:drawablePadding="20dp"
-        android:hint="@string/search_input_hint"
-        android:paddingStart="20dp"
-        app:layout_constraintEnd_toStartOf="@id/do_search"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    </data>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="88dp"
-        android:layout_marginStart="48dp"
-        android:gravity="center_vertical"
-        android:text="@string/search_column_name"
-        android:textColor="@color/sub_title"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_input" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="88dp"
-        android:layout_marginStart="24dp"
-        android:gravity="center_vertical"
-        android:text="@string/search_column_date"
-        android:textColor="@color/sub_title"
-        android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_input" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="88dp"
-        android:layout_marginStart="24dp"
-        android:gravity="center_vertical"
-        android:text="@string/search_column_state"
-        android:textColor="@color/sub_title"
-        android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.74"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_input" />
-
-
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="64dp"
-        app:cardBackgroundColor="@color/tool_bar"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:layout_constraintTop_toBottomOf="@id/search_input"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        tools:context=".bussiness.ordersearch.OrderSearchFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_list"
+        <TextView
+            android:id="@+id/do_search"
+            android:layout_width="178dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_btn_primary"
+            android:gravity="center"
+            android:text="@string/do_search"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/search_input"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_saerch_input"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:drawablePadding="20dp"
+            android:hint="@string/search_input_hint"
+            android:textColorHint="#5B5B5B"
+            android:textColor="@color/white"
+            android:paddingStart="20dp"
+            app:layout_constraintEnd_toStartOf="@id/do_search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="88dp"
+            android:layout_marginStart="48dp"
+            android:gravity="center_vertical"
+            android:text="@string/search_column_name"
+            android:textColor="@color/sub_title"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_input" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="88dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center_vertical"
+            android:text="@string/search_column_date"
+            android:textColor="@color/sub_title"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_input" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="88dp"
+            android:gravity="center_vertical"
+            android:text="@string/search_column_state"
+            android:textColor="@color/sub_title"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.74"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_input" />
+
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_order_search"/>
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="64dp"
+            app:cardBackgroundColor="@color/order_search_list_light"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_input">
 
-    </com.google.android.material.card.MaterialCardView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_order_search" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

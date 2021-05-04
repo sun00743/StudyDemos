@@ -10,7 +10,14 @@
 
     <color name="selected">#FF03DAC5</color>
     <color name="primary_black">#151515</color>
+    <color name="primary_black_light">#333333</color>
     <color name="tool_bar">#333333</color>
     <color name="login_input_hint">#76FFFFFF</color>
     <color name="sub_title">#D3D3D3</color>
+    <color name="order_state_ready">#FF8C00</color>
+    <color name="order_state_cooking">#D4FF00</color>
+    <color name="order_state_finish">@android:color/white</color>
+
+    <color name="order_search_list_light">#88333333</color>
+    <color name="order_search_list">@color/primary_black_light</color>
 </resources>

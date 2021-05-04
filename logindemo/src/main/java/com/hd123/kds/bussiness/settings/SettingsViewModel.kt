@@ -63,7 +63,9 @@ class SettingsViewModel : BaseViewModel() {
             logger.info(" 设置客显地址: " + LDSRequestConfig().getBaseUrl())
         }
         coroutineLaunch {
-            val bindLDSResult = ldsRepository.bindLDS()
+            val bindLDSResult = withContext(Dispatchers.IO) {
+                ldsRepository.bindLDS()
+            }
             if (bindLDSResult is Result.Success) {
                 // TODO: 2021/4/29
                 ToastHolder.toast(R.string.settings_success_bind_lds)
